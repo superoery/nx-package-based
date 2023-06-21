@@ -1,16 +1,17 @@
 {
     "name": "@test/is-even",
-    "version": "0.1.3",
-    "main": "dist/index.js",
+    "version": "0.2.1",
+    "main": "index.js",
     "files": [
-        "dist"
+        "lib",
+        "index.d.ts"
     ],
-    "types": "dist/index.d.ts",
+    "types": "index.d.ts",
     "devDependencies": {},
     "scripts": {
-        "build": "tsc ",
-        "publish": "pnpm publish --no-git-checks",
-        "test-publish": "pnpm publish --no-git-checks --dry-run"
+        "build": "tsc && cp-cli package.json ./dist/package.json && cp-cli .npmrc ./dist/.npmrc",
+        "my-publish": "cd dist && pnpm publish --no-git-checks",
+        "test-publish": "cd dist && pnpm publish --no-git-checks --dry-run"
     },
     "publishConfig": {
         "@test:registry": "https://gitlab.dorabot.com/api/v4/projects/4649/packages/npm/"

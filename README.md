@@ -14,7 +14,8 @@ pnpm update -r --workspace @test/is-even
 在packages/is-even仓库里面，执行下面的命令，上传is-even到远程仓库
 ```
 pnpm run build
-pnpm run publish //这个不知道为什么上传成功后会报错
+pnpm run my-publish 
+//不要在package.json里添加publish脚本，会报错，会覆盖原有行为
 ```
 
 修改packages/is-odd的package.json，修改对is-even的依赖，使用远程仓库的版本
@@ -22,6 +23,10 @@ pnpm run publish //这个不知道为什么上传成功后会报错
     "dependencies": {
         "@test/is-even": "^0.1.1"
     }
+```
+同时需要在.npmrc里配置
+```
+link-workspace-packages=false
 ```
 
 在root目录执行命令，将会安装远程仓库的is-even到is-odd里
@@ -32,7 +37,10 @@ pnpm install
 疑问：为什么is-odd里的is-even里有prod版本以外的文件（有dev文件）
 
 
-
+如果需要更新版本，则到is-odd目录里，执行
+```
+pnpm update @test-is-even
+```
 
 # NxPackageBased
 
