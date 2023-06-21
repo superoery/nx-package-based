@@ -25,6 +25,16 @@ npx nx affected -t build
 
 ```
 
+
+# 测试引用关系
+在is-odd里面，通过这个引用isEven
+```
+import {isEven} from 'is-even';
+
+```
+而isEven里面package.json的main是dist/index.js。
+也就是说，如果isEvent没有build，那么is-odd里会找不到文件
+
 注意：默认缓存位置在 node_modules/.cache/nx，可以在nx.json里配置。更多信息见https://nx.dev/concepts/how-caching-works#customizing-the-cache-location
 # NxPackageBased
 
