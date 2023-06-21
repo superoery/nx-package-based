@@ -1,41 +1,7 @@
-# 示例步骤
-https://nx.dev/tutorials/package-based-repo-tutorial
-
-测试is-odd的build依赖，见nx.json配置
-```
-cd packages/is-odd 
-npx nx build is-odd
-
-```
-
-测试执行多个命令
-```
-npx nx run-many -t build
-```
-
-跳过缓存
-```
-npx nx run-many -t build --skip-nx-cache
-```
+# 当前分支
+测试pnpm的workspace
 
 
-执行受影响的项目
-```
-npx nx affected -t build
-
-```
-
-
-# 测试引用关系
-在is-odd里面，通过这个引用isEven
-```
-import {isEven} from 'is-even';
-
-```
-而isEven里面package.json的main是dist/index.js。
-也就是说，如果isEvent没有build，那么is-odd里会找不到文件
-
-注意：默认缓存位置在 node_modules/.cache/nx，可以在nx.json里配置。更多信息见https://nx.dev/concepts/how-caching-works#customizing-the-cache-location
 # NxPackageBased
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
