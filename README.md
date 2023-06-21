@@ -1,3 +1,31 @@
+# 示例步骤
+https://nx.dev/tutorials/package-based-repo-tutorial
+
+测试is-odd的build依赖，见nx.json配置
+```
+cd packages/is-odd 
+npx nx build is-odd
+
+```
+
+测试执行多个命令
+```
+npx nx run-many -t build
+```
+
+跳过缓存
+```
+npx nx run-many -t build --skip-nx-cache
+```
+
+
+执行受影响的项目
+```
+npx nx affected -t build
+
+```
+
+注意：默认缓存位置在 node_modules/.cache/nx，可以在nx.json里配置。更多信息见https://nx.dev/concepts/how-caching-works#customizing-the-cache-location
 # NxPackageBased
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
