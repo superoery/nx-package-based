@@ -1,6 +1,38 @@
 # 当前分支
 测试pnpm的workspace
 
+执行,发现is-odd里面直接安装了is-even的prod版本
+```
+pnpm install
+```
+
+强制使用工作区里的@test/is-even
+```
+pnpm update -r --workspace @test/is-even
+```
+
+在packages/is-even仓库里面，执行下面的命令，上传is-even到远程仓库
+```
+pnpm run build
+pnpm run publish //这个不知道为什么上传成功后会报错
+```
+
+修改packages/is-odd的package.json，修改对is-even的依赖，使用远程仓库的版本
+```
+    "dependencies": {
+        "@test/is-even": "^0.1.1"
+    }
+```
+
+在root目录执行命令，将会安装远程仓库的is-even到is-odd里
+```
+pnpm install
+```
+
+疑问：为什么is-odd里的is-even里有prod版本以外的文件（有dev文件）
+
+
+
 
 # NxPackageBased
 
